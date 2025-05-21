@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  terraform:
+  terraform-plan:
     name: 'Terraform'
     runs-on: self-hosted
     environment: production
@@ -34,6 +34,27 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false -out plan.out
 
+    - name: Upload Terraform Plan
+      uses: actions/upload-artifact@v4
+      with:
+        name: my-plan
+        path: plan.out
+
+  terraform-apply:
+    name: 'Terraform Apply'
+    runs-on: self-hosted
+    environment: production
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+
+    - name: Download Terraform Plan
+      uses: actions/download-artifact@v4
+      with:
+        name: my-plan
+    
     - name: Terraform Apply
       if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: terraform apply -input=false plan.out
