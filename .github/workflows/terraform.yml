@@ -52,6 +52,9 @@ jobs:
 
     steps:
 
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
     - name: Download Terraform Plan
       uses: actions/download-artifact@v4
       with:
