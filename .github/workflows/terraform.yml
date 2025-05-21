@@ -43,6 +43,7 @@ jobs:
   terraform-apply:
     name: 'Terraform Apply'
     runs-on: self-hosted
+    needs: terraform-plan
     environment: production
     defaults:
       run:
