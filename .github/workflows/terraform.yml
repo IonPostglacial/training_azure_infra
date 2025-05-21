@@ -39,6 +39,7 @@ jobs:
       with:
         name: my-plan
         path: plan.out
+        retention-days: 5
 
   terraform-apply:
     name: 'Terraform Apply'
