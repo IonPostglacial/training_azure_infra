@@ -49,7 +49,7 @@ jobs:
     name: 'Terraform Apply'
     runs-on: self-hosted
     needs: terraform-plan
-    environment: production
+    environment: ${{ github.ref_name }}
     defaults:
       run:
         shell: bash
