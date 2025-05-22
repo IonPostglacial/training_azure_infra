@@ -12,7 +12,6 @@ jobs:
   terraform-plan:
     name: 'Terraform Plan'
     runs-on: self-hosted
-    environment: production
     defaults:
       run:
         shell: bash
