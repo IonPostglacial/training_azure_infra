@@ -21,7 +21,7 @@ locals {
       vnet_address_space    = "10.0.0.0/16"
       subnet_name           = "ngalipot-subnet1"
       subnet_address_prefix = "10.0.1.0/24"
-      open_ports            = ["80", "443", "8000"]
+      open_ports            = ["80", "443", "8080"]
     },
     { vnet_name             = "ngalipot-vnet2"
       vnet_address_space    = "10.1.0.0/16"
