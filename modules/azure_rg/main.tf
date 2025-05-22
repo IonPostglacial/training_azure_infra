@@ -15,29 +15,29 @@ resource "azurerm_subnet" "ngalipot_subnet" {
   address_prefixes     = [var.subnet_address_prefix]
 }
 
-resource "azurerm_network_security_group" "ngalipot_nsg" {
-  name                = "acceptanceTestSecurityGroup1"
-  location            = var.resource_group.location
-  resource_group_name = var.resource_group.name
-}
+# resource "azurerm_network_security_group" "ngalipot_nsg" {
+#   name                = "acceptanceTestSecurityGroup1"
+#   location            = var.resource_group.location
+#   resource_group_name = var.resource_group.name
+# }
 
-resource "azurerm_subnet_network_security_group_association" "ngalipot_subnet_nsg" {
-  subnet_id                 = azurerm_subnet.ngalipot_subnet.id
-  network_security_group_id = azurerm_network_security_group.ngalipot_nsg.id
-}
+# resource "azurerm_subnet_network_security_group_association" "ngalipot_subnet_nsg" {
+#   subnet_id                 = azurerm_subnet.ngalipot_subnet.id
+#   network_security_group_id = azurerm_network_security_group.ngalipot_nsg.id
+# }
 
-resource "azurerm_network_security_rule" "this" {
-  count = length(var.open_ports)
+# resource "azurerm_network_security_rule" "this" {
+#   count = length(var.open_ports)
 
-  name                        = "port-${var.open_ports[count.index]}"
-  priority                    = 100 + count.index
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
-  source_port_range           = var.open_ports[count.index]
-  destination_port_range      = var.open_ports[count.index]
-  source_address_prefix       = "*"
-  destination_address_prefix  = "*"
-  resource_group_name         = var.resource_group.name
-  network_security_group_name = azurerm_network_security_group.ngalipot_nsg.name
-}
+#   name                        = "port-${var.open_ports[count.index]}"
+#   priority                    = 100 + count.index
+#   direction                   = "Inbound"
+#   access                      = "Allow"
+#   protocol                    = "Tcp"
+#   source_port_range           = var.open_ports[count.index]
+#   destination_port_range      = var.open_ports[count.index]
+#   source_address_prefix       = "*"
+#   destination_address_prefix  = "*"
+#   resource_group_name         = var.resource_group.name
+#   network_security_group_name = azurerm_network_security_group.ngalipot_nsg.name
+# }
