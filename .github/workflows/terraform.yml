@@ -32,7 +32,7 @@ jobs:
 
     - name: Terraform Plan
       env:
-        TF_VAR_name: ${{ vars.TF_VAR_NAME }}
+        TF_VAR_name: ngalipot2
       run: terraform plan -input=false -out plan.out
 
     - name: Display plan
@@ -58,6 +58,9 @@ jobs:
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
+
+    - name: Echo name
+      run: echo ${{ vars.TF_VAR_NAME }}
 
     - name: Download Terraform Plan
       uses: actions/download-artifact@v4
