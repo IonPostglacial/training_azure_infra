@@ -12,7 +12,7 @@ jobs:
   terraform-plan:
     name: 'Terraform Plan'
     runs-on: self-hosted
-    environment: production
+    environment: ${{ github.ref_name }}
     defaults:
       run:
         shell: bash
