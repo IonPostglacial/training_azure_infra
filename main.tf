@@ -17,7 +17,7 @@ locals {
   resource_group_name     = "ngalipot-rg"
   resource_group_location = "West Europe"
   vnets = [
-    { vnet_name             = "ngalipot-vnet1"
+    { vnet_name             = var.name
       vnet_address_space    = "10.0.0.0/16"
       subnet_name           = "ngalipot-subnet1"
       subnet_address_prefix = "10.0.1.0/24"
